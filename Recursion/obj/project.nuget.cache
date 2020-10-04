@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "iX1e/pTKMTBmyrkaSs2Pj3yg8Ok3rryEPPj0Rgf/UEdTqKyrVRU18hQJGoPXJQAZdf5ZRAOVL8P5XEAULZ6Exw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fredd\\Desktop\\OneDrive - INTEC\\AGO-OCT-2020\\INS-214-Programacion-2\\Semana 9\\Recursion\\Recursion\\Recursion.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fredd\\.nuget\\packages\\fsharp.core\\4.7.2\\fsharp.core.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
