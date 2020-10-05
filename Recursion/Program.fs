@@ -1,106 +1,103 @@
-﻿// Learn more about F# at http://fsharp.org
+// Learn more about F# at http://fsharp.org
 
 open System
 
 
 // RECURSIVIDAD
 // FACTORIAL DE UN NUMERO MEDIANTE RECURSIVIDAD
-let rec recFactorial n = 
-    if n<= 1 then
-        1
+let rec recFactorial (n:double) :double = 
+    if n<= double(1) then
+        double(1)
     else
-        recFactorial(n-1) * n
+        recFactorial(n- double(1)) * double(n)
 
 // SUMA DE LOS NUMEROS ANTERIORES
-let rec recSum n =
-    if n<= 1 then
-        n
+let rec recSum (n:double):double =
+    if n<= double(1) then
+        double(n)
     else
-        recSum(n-1) + n
+        recSum(n- double(1)) + double(n)
 
 // TAIL RECURSION
 // FACTORIAL DE UN NUMERO CON TAIL RECURSION
-let tail_factorial n =
-    let rec accFactorial n acc = 
-        if n <=1 then
+let tail_factorial n :double =
+    let rec accFactorial n acc :double =
+        if n <= double(1) then  
             acc
         else
-            accFactorial (n-1) (acc * n)
-    accFactorial n 1
+            accFactorial (n - double(1)) (acc * n)
+    accFactorial n (double(1))
 
 // SUMA DE LOS NUMEROS ANTERIORES CON TAIL RECURSION
-let tail_sum n =
-    let rec accSum n acc =
-        if n <= 1 then  
-            acc
+let tail_sum (n:double):double =
+    let rec accSum (n:double) (acc:double) :double =
+        if n <= double(1) then  
+            double(acc)
         else
-            accSum (n-1) (acc + n)
-    accSum n 1
+            accSum (n- double(1)) (acc + n)
+    accSum (double(n)) (double(1))
 
 // MAXIMO COMUN DIVISOR CON TAIL RECURSION
-let rec tail_GCD n1 n2 =
-    if n2 <= 0 then
+let rec tail_GCD (n1:double) (n2:double) :double =
+    if n2 <= double(0) then
         n1
     else
-        tail_GCD n2 (n1 % n2)
+        tail_GCD (double(n2)) (n1 % n2)
 
 // VERSIONES ITERATIVAS
 // FACTORIAL DE UN NUMERO ITERATIVAMENTE
-let itFactorial n =
-    let mutable fact = 1
-    if n < 2 then
-        n
+let itFactorial (n:double):double =
+    let mutable fact:double = double(1)
+    if n < double(2) then
+        double(n)
     else
-        for i in n .. -1 .. 1 do
-            fact <- fact * i
-        fact
+        for i in n .. double(-1) .. double(1) do
+            fact <- fact * (double(i))
+        double(fact)
 
 // SUMA DE LOS NUMEROS ANTERIORES ITERATIVAMENTE
-let itSum n =
-    let mutable sum = 0
-    if n < 2 then
-        n
+let itSum (n:double) :double =
+    let mutable sum:double = double(0)
+    if n < double(2) then
+        double(n)
     else
-        for i in n .. -1 .. 0 do
-            sum <- sum + i
-        sum
+        for i in n .. double(-1) .. double(0) do
+            sum <- sum + double(i)
+        double(sum)
 // MAXIMO COMUN DIVISOR ITERATIVAMENTE
-let itGCD n1 n2 =
-    let mutable num1 = n1
-    let mutable num2 = n2
-    let mutable modulo = n1 % n2
-    while modulo > 0 do
+let itGCD n1 n2 :double =
+    let mutable num1 = n1:double
+    let mutable num2 = n2:double
+    let mutable modulo = (n1 % n2):double
+    while modulo > double(0) do
         num1 <- num2
         num2 <- modulo
         modulo <- num1 % num2
-    num2
+    double(num2)
 [<EntryPoint>]
-let main argv =
-
-    printfn "Factorial de un numero"
-    let recursiveFactorial = recFactorial 6
-    printfn "Con Recursion: %i" recursiveFactorial
-    let tailRecursiveFacotrial = tail_factorial 6
-    printfn "Con Tail Recursion: %i" recursiveFactorial
-    let iterativeFactorial = itFactorial 6
-    printfn "Con Iteracion: %i" iterativeFactorial
+let main argv = 
+    let recursiveFactorial:double = recFactorial (double(6))
+    printfn "Con Recursion: %f" recursiveFactorial
+    let tailRecursiveFacotrial:double = tail_factorial (double(100000))
+    printfn "Con Tail Recursion: %f" tailRecursiveFacotrial
+    let iterativeFactorial:double = itFactorial (double(6))
+    printfn "Con Iteracion: %f" iterativeFactorial
     printfn ""
 
     printfn "Suma de los numeros anteriores"
-    let recursiveSum = recSum 6
-    printfn "Con Recursion: %i" recursiveSum
-    let tailRecursiveSum = tail_sum 6
-    printfn "Con Tail Recursion: %i" tailRecursiveSum
-    let iterativeSum = itSum 6
-    printfn "Con Iteracion: %i" iterativeSum
+    let recursiveSum:double = recSum (double(6))
+    printfn "Con Recursion: %f" recursiveSum
+    let tailRecursiveSum:double = tail_sum (double(6))
+    printfn "Con Tail Recursion: %f" tailRecursiveSum
+    let iterativeSum:double = itSum (double(6))
+    printfn "Con Iteracion: %f" iterativeSum
     printfn ""
 
     printfn "Maximo Comun Divisor"
-    let tailRecursiveGCD = tail_GCD 48 60
-    printfn "Con Tail Recursion: %i" tailRecursiveGCD
-    let iterativeGCD = itGCD 48 60
-    printfn "Con Iteracion: %i" iterativeGCD
+    let tailRecursiveGCD:double = tail_GCD (double(48)) (double(60))
+    printfn "Con Tail Recursion: %f" tailRecursiveGCD
+    let iterativeGCD:double = itGCD (double(48)) (double(60))
+    printfn "Con Iteracion: %f" iterativeGCD
     printfn ""
-
-
-    0 // return an integer exit code
+    
+    0 
